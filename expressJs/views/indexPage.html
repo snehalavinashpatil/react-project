@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var email,password;
+                $('#submit').click(function(){
+                    email = $('#email').val();
+                    password = $('#pass').val();
+                    $.post('http://localhost:3000/login',{
+                        email : email,
+                        password : password
+                    },function(data){
+                        if(data == 'Done'){
+                            window.location.href = '/admin'
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        Enter your EmailId:<input type="text" id="email"><br>
+        Enter your password:<input type="password" id="pass"><br>
+        <input type="submit" value="submit" id="submit">
+    </body>
+</html>
